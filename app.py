@@ -7,9 +7,9 @@ SECRET_KEY = os.urandom(32)
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 
-@app.route('/')
-def home():
-	return "hello, world!!!"
+@app.route('/index')
+def index():
+	return render_template("index.html")
 
 @app.route('/welcome')
 def welcome():
