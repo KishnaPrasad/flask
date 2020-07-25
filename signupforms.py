@@ -19,7 +19,7 @@ class SignupForm(FlaskForm):
 	password = PasswordField('Password',[InputRequired(),EqualTo('confirmpassword',message='Passwords must match')])
 	confirmpassword = PasswordField('Repeat Password',[InputRequired(), EqualTo(password, message='Passwords must match')])
 	submit = SubmitField('Submit')
-
+	
 
  	#, [
      #    Email(message="Not a valid email address."),
