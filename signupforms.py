@@ -17,7 +17,7 @@ class SignupForm(FlaskForm):
 	name = StringField('Name',[DataRequired(), Length(min=4, max=26)])
 	email = StringField('Email',[InputRequired()])
 	password = PasswordField('Password',[InputRequired(),EqualTo('confirmpassword',message='Passwords must match')])
-	confirmpassword = PasswordField('Repeat Password',[InputRequired(), EqualTo(password, message='Passwords must match')])
+	confirmpassword = PasswordField('Repeat Password',[InputRequired(), EqualTo('password', message='Passwords must match')])
 	submit = SubmitField('Submit')
 	
 

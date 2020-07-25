@@ -1,9 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="formwrapper">
+<!-- <p>dear, we got an error: {{ error }}</p>
+ --><div class="formwrapper">
   <h2 class="title">Sign Up</h2>
-  <form method="POST" action="/">
+  <form method="POST" action="">
+     {{ form.csrf_token }}
     <div class="form-field">{{ form.name.label }} {{ form.name }}
       {% if form.name.errors %}
         <ul class="errors">
@@ -41,6 +43,8 @@
         </ul>
       {% endif %}
     </div>
+    <div class="dropdown-divider"></div>
+  <small>Already have an account?</small> <a href="{{ url_for('index') }}">Sign In</a></br>
     
     {{ form.submit }}
   </form>
