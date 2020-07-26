@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -41,17 +41,14 @@
 </style>
 </head>
   <body>
-<!-- {{t}} -->
 {{email_lists}}
-<hr>
+
 {% for email_list in email_lists %}
 
 <img src='{{"https://www.gravatar.com/avatar/"+email_list+"?d=retro&s=50"}}' class="avatar" data-toggle="tooltip" title="{{data}}"></image>
  
 {% endfor %}
-    <!-- {%for l in t%} -->
-    <!--   {{l}}
-    {% endfor %} --> -->
+    
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
 

@@ -71,26 +71,28 @@ def index():
 @app.route('/signup', methods=['GET','POST'])
 def signup():
 	form = SignupForm()
-	if form.validate_on_submit():
-		
-		name = request.form.get('name')
-		email=request.form.get('email')
-		passw = request.form.get('password')
-		try:
-			session['email'] = email
-			session['password'] = passw
-			user = auth.create_user_with_email_and_password(email, passw)
-			user = auth.refresh(user['refreshToken'])
-			user_id = user['idToken']
-			session['usr'] = user_id
-			hashed_email = md5(email.lower().encode('utf-8')).hexdigest()
-			data = {"name": name,"email": email}
-			ref="user_data/"+hashed_email+"/"
-			db.child(ref).set(data)
-			return redirect(url_for("home"))
-		except Exception as e:
-			return render_template('signup.html',form=form, error=str(e))
-	return render_template('signup.html',form=form)
+	if not session['email'] is None:
+		if form.validate_on_submit():
+			name = request.form.get('name')
+			email=request.form.get('email')
+			passw = request.form.get('password')
+			try:
+				session['email'] = email
+				session['password'] = passw
+				user = auth.create_user_with_email_and_password(email, passw)
+				user = auth.refresh(user['refreshToken'])
+				user_id = user['idToken']
+				session['usr'] = user_id
+				hashed_email = md5(email.lower().encode('utf-8')).hexdigest()
+				data = {"name": name,"email": email}
+				ref="user_data/"+hashed_email+"/"
+				db.child(ref).set(data)
+				return redirect(url_for("home"))
+			except Exception as e:
+				return render_template('signup.html',form=form, error=str(e))
+		return render_template('signup.html',form=form)
+	else:
+		return render_template('home.html')
 
 @app.route('/home',methods=['GET','POST'])
 def home():
