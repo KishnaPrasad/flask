@@ -121,7 +121,8 @@ def home():
 		for user in all_users.each():
 			if email in user.val().values():
 				name = user.val().values()
-				s=name[1]
+				vlist=list(name)
+				s=vlist[1]
 		hashed_email = md5(email.lower().encode('utf-8')).hexdigest()
 		ref = "users/"+hashed_email+"/"
 		start_date = datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
