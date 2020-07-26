@@ -134,7 +134,8 @@ def home():
 		all_user_status = db.child(ref_status).get()
 		for user in all_user_status.each():
 			count_email = user.val().values()
-			email_lists.append(md5(count_email[1].lower().encode('utf-8')).hexdigest())
+			vlist=list(count_email)
+			email_lists.append(md5(vlist[1].lower().encode('utf-8')).hexdigest())
 			# email_lists.append(count_email[1])
 			# print(count_email[1])
 			
