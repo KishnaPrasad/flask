@@ -47,7 +47,7 @@ def index():
 				user = auth.refresh(user['refreshToken'])
 				user_id = user['idToken']
 				session['usr'] = user_id
-				return render_template('home.html')
+				return redirect(url_for("home"))
 			except:
 				return render_template("index.html", us=unsuccessfull)
 
@@ -87,7 +87,7 @@ def signup():
 			data = {"name": name,"email": email}
 			ref="user_data/"+hashed_email+"/"
 			db.child(ref).set(data)
-			return render_template('home.html')
+			return redirect(url_for("home"))
 		except Exception as e:
 			return render_template('signup.html',form=form, error=str(e))
 	return render_template('signup.html',form=form)
@@ -158,4 +158,4 @@ def home():
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(debug=False)
