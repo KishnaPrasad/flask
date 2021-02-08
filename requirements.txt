@@ -29,7 +29,7 @@ grpc-google-logging-v2==0.8.1
 grpc-google-pubsub-v1==0.8.1
 grpcio==1.30.0
 gunicorn==19.10.0
-httplib2==0.18.1
+httplib2==0.19.0
 idna==2.10
 itsdangerous==1.1.0
 Jinja2==2.11.2
